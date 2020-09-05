@@ -1,0 +1,41 @@
+type Student {
+    id: ID!
+    firstName: String
+    lastName: String
+    studentFamily: [StudentFamily]
+
+}
+
+type StudentFamily {
+    id: ID!
+    fatherName: String
+    motherName: String
+}
+
+type Query {
+    allStudents: [Student]
+    getStudent(id:Int) : Student
+}
+
+type Mutation {
+    newStudent(input: StudentInput) : Student
+    updateStudent(input: StudentInput): Student
+}
+
+input StudentInput {
+    id: Int
+    firstName: String!
+    lastName : String!
+    studentFamily: [StudentFamilyInput]
+
+}
+
+input StudentFamilyInput {
+    id: Int
+    fatherName: String
+    motherName: String
+}
+
+schema {
+    query: Query
+}
